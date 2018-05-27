@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GUIButton : IMyGUI
+public class MyGUIButton : IMyGUI
 {
     public GUIContent label = new GUIContent();
     public event System.Action OnClick;

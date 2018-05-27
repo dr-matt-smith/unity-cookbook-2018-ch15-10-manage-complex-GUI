@@ -6,13 +6,13 @@ using System.Collections.Generic;
 // https://answers.unity.com/questions/601131/editorgui-editorguilayout-gui-guilayout-pshhh-when.html
 public class MyEditorWindow : EditorWindow 
  {
-     GUITextField username;
-     GUITextField realname;
-     GUIButton registerButton;
-     GUIFlexibleSpace flexibleSpace;
+     MyGUITextField username;
+     MyGUITextField realname;
+     MyGUIButton registerButton;
+     MyGUIFlexibleSpace flexibleSpace;
 
      // Optional, but may be convenient.
-     List<IMyGUI> gui = new List<IMyGUI>();
+     List<IMyGUI> guiComponents = new List<IMyGUI>();
 
      [MenuItem("Example/Show Window")]
      public static void ShowWindow () {
@@ -22,36 +22,36 @@ public class MyEditorWindow : EditorWindow
      // setup all our GUI obejcts
      void OnEnable()
      {
-        username = new GUITextField ();
+        username = new MyGUITextField ();
         username.label.text = "Username";
         username.text = "JDoe";
         
-        realname = new GUITextField ();
+        realname = new MyGUITextField ();
         realname.label.text = "Real name";
         realname.text = "John Doe";
                 
-        registerButton = new GUIButton ();
+        registerButton = new MyGUIButton ();
         registerButton.label.text = "Register";
-         // add RegisterUser() to button's OnClick event broadcaster
-        registerButton.OnClick += RegisterUser;
+         // add LogUser() to button's OnClick event broadcaster
+        registerButton.OnClick += LogUser;
         
-        bool centerFully = true;
-        gui.Add(new GUILabel("Unity 2018 is great", centerFully));
+         bool centerFully = true;
+         guiComponents.Add(new MyGUILabel("Unity 2018 is great", centerFully));
         
-        gui.Add (username);
-        gui.Add (realname);
-        gui.Add(new GUIFlexibleSpace());
-        gui.Add (registerButton);        
+         guiComponents.Add (username);
+         guiComponents.Add (realname);
+         guiComponents.Add(new MyGUIFlexibleSpace());
+         guiComponents.Add (registerButton);        
      }
 
-     // remove method RegisterUser() from button's OnClick event broadcaster
+     // remove method LogUser() from button's OnClick event broadcaster
      private void OnDisable()
      {
-         registerButton.OnClick -= RegisterUser;
+         registerButton.OnClick -= LogUser;
      }
 
      // actions to perform when button clicked
-     void RegisterUser()
+     void LogUser()
      {
          var msg = "Registering " + realname.text + " as " + username.text;
          Debug.Log (msg);
@@ -59,7 +59,7 @@ public class MyEditorWindow : EditorWindow
 
      // loop through to display all GUI controls each frame
      void OnGUI() {
-         foreach (var item in gui)
-             item.OnGUI();
+         foreach (var component in guiComponents)
+             component.OnGUI();
      }
  }

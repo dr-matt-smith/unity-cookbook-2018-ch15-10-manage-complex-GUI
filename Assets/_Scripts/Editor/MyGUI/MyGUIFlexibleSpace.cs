@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GUIFlexibleSpace : IMyGUI
+public class MyGUIFlexibleSpace : IMyGUI
 {
 	public void OnGUI()
 	{

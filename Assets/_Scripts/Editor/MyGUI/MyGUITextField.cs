@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-public class GUITextField : IMyGUI
+public class MyGUITextField : IMyGUI
 {
     public string text = "";
     public GUIContent label = new GUIContent();

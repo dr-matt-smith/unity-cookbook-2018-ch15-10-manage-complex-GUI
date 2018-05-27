@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class GUILabel : IMyGUI
+public class MyGUILabel : IMyGUI
 {
     private string text;
     private bool centerFully;
 
-    public GUILabel(string text, bool centerFully = false)
+    public MyGUILabel(string text, bool centerFully = false)
     {
         this.text = text;
         this.centerFully = centerFully;
